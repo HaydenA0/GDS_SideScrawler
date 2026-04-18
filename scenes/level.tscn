@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://duuimakeo8kjy"]
+
+[ext_resource type="PackedScene" uid="uid://kgtl3a15jal5" path="res://scenes/player.tscn" id="1_2q6dc"]
+[ext_resource type="Texture2D" uid="uid://375jnk05umlv" path="res://assets/sky.png" id="1_mx8sn"]
+[ext_resource type="Texture2D" uid="uid://7o8hvpvehmiw" path="res://assets/mountain.png" id="2_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://cxom64genl2pr" path="res://scenes/ground.tscn" id="2_w7c3h"]
+
+[sub_resource type="Environment" id="Environment_mx8sn"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.63
+glow_strength = 1.95
+glow_bloom = 0.06
+glow_hdr_threshold = 0.3
+glow_hdr_luminance_cap = 19.2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mx8sn"]
+emission_shape = 3
+emission_box_extents = Vector3(150, 0, 1)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 132.29999
+gravity = Vector3(0, 10, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 0.57
+
+[node name="Level" type="Node2D" unique_id=988666571]
+metadata/_edit_vertical_guides_ = [322.0]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=413002150]
+environment = SubResource("Environment_mx8sn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=804972498]
+visible = false
+offset_left = -57.0
+offset_top = -5.0
+offset_right = 325.0
+offset_bottom = 207.0
+color = Color(0.36078432, 0.3137255, 0.3529412, 1)
+
+[node name="Background" type="ParallaxBackground" parent="." unique_id=1232539891]
+
+[node name="Sky" type="ParallaxLayer" parent="Background" unique_id=1121636714]
+position = Vector2(3, 34)
+scale = Vector2(1.1, 1.1)
+
+[node name="Sky2" type="Sprite2D" parent="Background/Sky" unique_id=2013068883]
+modulate = Color(0.44499403, 0.3709813, 0.3709813, 1)
+position = Vector2(155.45454, 117.27273)
+scale = Vector2(1.028125, 1.0444444)
+texture = ExtResource("1_mx8sn")
+
+[node name="Mountain" type="ParallaxLayer" parent="Background" unique_id=1216717571]
+position = Vector2(10, -24)
+scale = Vector2(1.1, 1.1)
+motion_scale = Vector2(0.3, 1)
+
+[node name="Mountain2" type="Sprite2D" parent="Background/Mountain" unique_id=1327922426]
+modulate = Color(0.23510475, 0.26422563, 0.26422563, 1)
+position = Vector2(155.45454, 130.00002)
+scale = Vector2(1.028, 1.028)
+texture = ExtResource("2_ppgk2")
+
+[node name="Ground" parent="." unique_id=1947644908 instance=ExtResource("2_w7c3h")]
+position = Vector2(3, -18)
+
+[node name="Player" parent="." unique_id=1372523004 instance=ExtResource("1_2q6dc")]
+position = Vector2(52, 135)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=847316299]
+color = Color(0.1026, 0.11934003, 0.27, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1901617448]
+position = Vector2(169, 140)
+amount = 10
+lifetime = 3.32
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_mx8sn")

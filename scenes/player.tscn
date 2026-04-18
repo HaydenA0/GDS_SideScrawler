@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://kgtl3a15jal5"]
+
+[ext_resource type="Script" uid="uid://w3g6awyqou7i" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://mb5etcqhq1gh" path="res://assets/player.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://c70kimtle1vc8" path="res://assets/light.png" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(16, 12)
+
+[node name="Player" type="CharacterBody2D" unique_id=1372523004]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1012688542]
+texture = ExtResource("2_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1568861219]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2042082759]
+position = Vector2(-29, 9)
+offset = Vector2(70, -20)
+zoom = Vector2(1.7, 1.7)
+limit_right = 280
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=620376608]
+position = Vector2(1.0000038, 1.0000019)
+scale = Vector2(10.070313, 6.1640625)
+color = Color(0, 0.7044249, 1.3767623, 1)
+energy = 4.41
+shadow_enabled = true
+texture = ExtResource("3_qhqgy")
+texture_scale = 0.01
